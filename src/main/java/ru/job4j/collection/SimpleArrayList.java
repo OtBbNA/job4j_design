@@ -78,19 +78,6 @@ public class SimpleArrayList<T> implements SimpleList<T> {
                 }
                 return container[index++];
             }
-
         };
-    }
-
-    public static void main(String[] args) {
-        SimpleArrayList<Integer> test = new SimpleArrayList<>(5);
-        test.add(1);
-        test.add(2);
-        test.add(3);
-        test.add(4);
-        test.add(5);
-        test.add(6);
-        test.add(7);
-        test.remove(3);
     }
 }
