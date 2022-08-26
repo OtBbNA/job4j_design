@@ -7,8 +7,6 @@ import java.util.Objects;
 
 public class SimpleLinkedList<E>  implements LinkedList<E> {
 
-
-
     private int modCount;
     private int size;
     transient Node<E> first;
@@ -43,7 +41,8 @@ public class SimpleLinkedList<E>  implements LinkedList<E> {
         return new Iterator<E>() {
             private int index = 0;
             private int modCountChecker = modCount;
-            private Node<E> f = first;
+            private Node<E> presValue = first;
+
             @Override
             public boolean hasNext() {
                 if (modCount != modCountChecker) {
@@ -57,10 +56,10 @@ public class SimpleLinkedList<E>  implements LinkedList<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                if (index != 0) {
-                    f = f.next;
-                }
-                return f.item;
+                index++;
+                Node<E> buffer = presValue;
+                presValue = presValue.next;
+                return buffer.item;
             }
         };
     }
