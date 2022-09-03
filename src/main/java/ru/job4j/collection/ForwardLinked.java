@@ -35,6 +35,10 @@ public class ForwardLinked<T> implements Iterable<T> {
         return val;
     }
 
+    public boolean revert() {
+        return false;
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
