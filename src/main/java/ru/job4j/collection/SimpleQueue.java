@@ -12,7 +12,7 @@ public class SimpleQueue<T> {
             throw new NoSuchElementException();
         }
         if (out.isEmpty()) {
-            while (in.getSize() >= 1) {
+            while (!in.isEmpty()) {
                 out.push(in.pop());
             }
         }
