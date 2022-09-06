@@ -24,10 +24,8 @@ public class ListUtils {
             if (iterator.nextIndex() == index) {
                 iterator.next();
                 iterator.add(value);
-                iterator.previous();
                 break;
             }
-            iterator.next();
         }
     }
 
