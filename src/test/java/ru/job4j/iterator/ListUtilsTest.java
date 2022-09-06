@@ -30,8 +30,8 @@ class ListUtilsTest {
 
     @Test
     void whenAddAfter() {
-        ListUtils.addAfter(input, 0, 2);
-        assertThat(input).hasSize(7).containsSequence(1, 2, 3, 4, 4, 4, 8);
+        ListUtils.addAfter(input, 5, 2);
+        assertThat(input).hasSize(7).containsSequence(1, 3, 4, 4, 4, 8, 2);
     }
 
     @Test
