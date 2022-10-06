@@ -1,10 +1,7 @@
 package ru.job4j.generics;
 
-import org.junit.Test;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 public class RoleStoreTest {
 
@@ -13,14 +10,14 @@ public class RoleStoreTest {
         RoleStore store = new RoleStore();
         store.add(new Role("1", "Junior", 2));
         Role result = store.findById("1");
-        assertThat(result.getRolename(), is("Junior"));
+        assertThat(result.getRolename()).isEqualTo("Junior");
     }
 
     @Test
     public void whenNoAddAndFindThenRolenameIsNull() {
         RoleStore store = new RoleStore();
         Role result = store.findById("1");
-        assertNull(result);
+        assertThat(result).isNull();
     }
 
     @Test
@@ -29,7 +26,7 @@ public class RoleStoreTest {
         store.add(new Role("1", "Junior", 2));
         store.replace("1", new Role("1", "Trainee", 3));
         Role result = store.findById("1");
-        assertThat(result.getRolename(), is("Trainee"));
+        assertThat(result.getRolename()).isEqualTo("Trainee");
     }
 
     @Test
@@ -38,7 +35,7 @@ public class RoleStoreTest {
         store.add(new Role("1", "Junior", 2));
         store.replace("2", new Role("2", "Trainee", 3));
         Role result = store.findById("1");
-        assertThat(result.getRolename(), is("Junior"));
+        assertThat(result.getRolename()).isEqualTo("Junior");
     }
 
     @Test
@@ -47,7 +44,7 @@ public class RoleStoreTest {
         store.add(new Role("1", "Junior", 2));
         store.delete("1");
         Role result = store.findById("1");
-        assertNull(result);
+        assertThat(result).isNull();
     }
 
     @Test
@@ -56,7 +53,7 @@ public class RoleStoreTest {
         store.add(new Role("1", "Junior", 2));
         store.delete("2");
         Role result = store.findById("1");
-        assertThat(result.getRolename(), is("Junior"));
+        assertThat(result.getRolename()).isEqualTo("Junior");
     }
 
     @Test
@@ -66,7 +63,7 @@ public class RoleStoreTest {
         store.add(new Role("2", "Trainee", 1));
         store.add(new Role("3", "Middle", 1));
         Role result = store.findById("3");
-        assertThat(result.getRolename(), is("Middle"));
+        assertThat(result.getRolename()).isEqualTo("Middle");
     }
 
     @Test
@@ -74,6 +71,6 @@ public class RoleStoreTest {
         RoleStore store = new RoleStore();
         store.add(new Role("1", "Junior", 2));
         Role result = store.findById("2");
-        assertNull(result);
+        assertThat(result).isNull();
     }
 }

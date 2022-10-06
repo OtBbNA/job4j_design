@@ -1,51 +1,52 @@
 package ru.job4j.iterator;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
+import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 import java.util.NoSuchElementException;
 
-public class BackwardArrayItTest {
+class BackwardArrayItTest {
 
     @Test
-    public void whenMultiCallHasNextThenTrue() {
+    void whenMultiCallHasNextThenTrue() {
         BackwardArrayIt it = new BackwardArrayIt(
-                new int[] {1, 2, 3}
+                new int[] {1, 2, 3, 4}
         );
-        assertTrue(it.hasNext());
-        assertTrue(it.hasNext());
-        assertSame(it.next(), 3);
+        assertThat(it.hasNext()).isTrue();
+        assertThat(it.hasNext()).isTrue();
+        assertThat(it.next()).isEqualTo(4);
+        assertThat(it.next()).isEqualTo(3);
+        assertThat(it.hasNext()).isTrue();
     }
 
     @Test
-    public void whenMultiCallHasNextThenNext() {
+    void whenMultiCallHasNextThenNext() {
         BackwardArrayIt it = new BackwardArrayIt(
                 new int[] {1, 2, 3}
         );
-        assertTrue(it.hasNext());
-        assertTrue(it.hasNext());
-        assertTrue(it.hasNext());
-        assertSame(it.next(), 3);
+        assertThat(it.hasNext()).isTrue();
+        assertThat(it.hasNext()).isTrue();
+        assertThat(it.hasNext()).isTrue();
+        assertThat(it.next()).isEqualTo(3);
 
     }
 
     @Test
-    public void whenReadSequence() {
+    void whenReadSequence() {
         BackwardArrayIt it = new BackwardArrayIt(
                 new int[] {1, 2, 3}
         );
-        assertSame(it.next(), 3);
-        assertSame(it.next(), 2);
-        assertSame(it.next(), 1);
-        assertFalse(it.hasNext());
+        assertThat(it.next()).isEqualTo(3);
+        assertThat(it.next()).isEqualTo(2);
+        assertThat(it.next()).isEqualTo(1);
+        assertThat(it.hasNext()).isFalse();
     }
 
-    @Test(expected = NoSuchElementException.class)
-    public void whenNextFromEmpty() {
+    @Test
+    void whenNextFromEmpty() {
         BackwardArrayIt it = new BackwardArrayIt(
                 new int[] {}
         );
-        it.next();
+        assertThatThrownBy(it::next)
+                .isInstanceOf(NoSuchElementException.class);
     }
 }

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Iterator;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 class SimpleSetTest {
 
@@ -71,12 +70,12 @@ class SimpleSetTest {
         assertThat(set.add(1)).isTrue();
         assertThat(set.add(2)).isTrue();
         assertThat(set.add(3)).isTrue();
-        assertTrue(iterator.hasNext());
-        assertEquals(Integer.valueOf(1), iterator.next());
-        assertTrue(iterator.hasNext());
-        assertEquals(Integer.valueOf(2), iterator.next());
-        assertTrue(iterator.hasNext());
-        assertEquals(Integer.valueOf(3), iterator.next());
-        assertFalse(iterator.hasNext());
+        assertThat(iterator.hasNext()).isTrue();
+        assertThat(Integer.valueOf(1)).isEqualTo(iterator.next());
+        assertThat(iterator.hasNext()).isTrue();
+        assertThat(Integer.valueOf(2)).isEqualTo(iterator.next());
+        assertThat(iterator.hasNext()).isTrue();
+        assertThat(Integer.valueOf(3)).isEqualTo(iterator.next());
+        assertThat(iterator.hasNext()).isFalse();
     }
 }
