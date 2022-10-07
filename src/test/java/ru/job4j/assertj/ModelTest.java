@@ -36,8 +36,7 @@ class ModelTest {
     }
 
     @Test
-    void checkDoubleChain()
-    {
+    void checkDoubleChain() {
         Model model = new Model(1, 5.255d, "name", true);
         double result = model.getNum();
         assertThat(result).isEqualTo(5.26d, withPrecision(0.006d))

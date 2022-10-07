@@ -6,8 +6,7 @@ public class Model {
     private String line;
     private boolean condition;
 
-    public Model(int top, double num, String line, boolean condition)
-    {
+    public Model(int top, double num, String line, boolean condition) {
         this.top = top;
         this.num = num;
         this.line = line;
