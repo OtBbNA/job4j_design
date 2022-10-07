@@ -39,7 +39,8 @@ public class Box {
         return this.vertex != -1;
     }
 
-    public double getArea() {
+    public double getArea()
+    {
         double a = edge;
         return switch (vertex) {
             case 0 -> 4 * Math.PI * (a * a);
