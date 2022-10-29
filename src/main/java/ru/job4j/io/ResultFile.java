@@ -1,6 +1,7 @@
 package ru.job4j.io;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ResultFile {
     public static void main(String[] args) {
@@ -9,8 +10,8 @@ public class ResultFile {
                 out.write(("4 * " + i + " = " + 4 * i).getBytes());
                 out.write(System.lineSeparator().getBytes());
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            e.getMessage();
         }
     }
 }
