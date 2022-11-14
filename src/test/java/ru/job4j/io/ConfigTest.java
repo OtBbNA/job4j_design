@@ -20,7 +20,7 @@ class ConfigTest {
         Config config = new Config(path);
         assertThatThrownBy(() -> config.load())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Value not found");
+                .hasMessageContaining("Key or value is empty");
     }
 
     @Test
@@ -38,7 +38,7 @@ class ConfigTest {
         Config config = new Config(path);
         assertThatThrownBy(() -> config.load())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("String length must be greater than 2");
+                .hasMessageContaining("Key or value is empty");
     }
 
 

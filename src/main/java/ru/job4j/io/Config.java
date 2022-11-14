@@ -20,24 +20,11 @@ public class Config {
     public void load() {
         try (BufferedReader app = new BufferedReader(new FileReader(path))) {
             for (String rsl = app.readLine(); rsl != null; rsl = app.readLine()) {
-                if (rsl.indexOf('#') != 0 && !rsl.isEmpty()) {
+                if (!rsl.isBlank() && !rsl.startsWith("#")) {
                     if (!rsl.contains("=")) {
                         throw new IllegalArgumentException("The string must contain the symbol =");
                     }
-                    if (rsl.length() < 3) {
-                        throw new IllegalArgumentException("String length must be greater than 2");
-                    }
-                    String[] mapKV = rsl.split("=");
-                    if (mapKV.length < 2) {
-                        throw new IllegalArgumentException("Value not found");
-                    }
-                    if (mapKV.length > 2) {
-                        StringBuilder val = new StringBuilder(mapKV[1]);
-                        for (int i = 2; i < mapKV.length; i++) {
-                            val.append('=' + mapKV[i]);
-                        }
-                        mapKV[1] = String.valueOf(val);
-                    }
+                    String[] mapKV = rsl.split("=", 2);
                     if (mapKV[0].isEmpty() || mapKV[1].isEmpty()) {
                         throw new IllegalArgumentException("Key or value is empty");
                     }
