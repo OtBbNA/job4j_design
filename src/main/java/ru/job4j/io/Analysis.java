@@ -9,25 +9,17 @@ public class Analysis {
         try (BufferedReader app = new BufferedReader(new FileReader(source));
              PrintWriter out = new PrintWriter(new BufferedOutputStream(new FileOutputStream(target)))) {
             boolean switcher = true;
-            String[] time;
             for (String i = app.readLine(); i != null; i = app.readLine()) {
-                if (((i.contains("400") || i.contains("500")) && switcher)
-                    || ((!i.contains("400") && !i.contains("500")) && !switcher)) {
-                    time = i.split(" ", 2);
-                    out.append(time[1] + ';');
+                boolean status = i.contains("400") || i.contains("500");
+                if ((status == switcher)) {
                     switcher = !switcher;
-                    if (switcher) {
-                        out.println();
-                    }
+                    out.append(i.split(" ", 2)[1])
+                            .append(';')
+                            .append(switcher ? System.lineSeparator() : "");
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        Analysis i = new Analysis();
-        i.unavailable("./data/unavailableSource.csv", "./data/unavailableResult.csv");
     }
 }
