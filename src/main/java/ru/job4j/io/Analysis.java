@@ -9,18 +9,16 @@ public class Analysis {
         try (BufferedReader app = new BufferedReader(new FileReader(source));
              PrintWriter out = new PrintWriter(new BufferedOutputStream(new FileOutputStream(target)))) {
             boolean switcher = true;
-            List<String> rsl = new ArrayList<>();
             String[] time;
             for (String i = app.readLine(); i != null; i = app.readLine()) {
-                if ((i.contains("400") || i.contains("500")) && switcher) {
+                if (((i.contains("400") || i.contains("500")) && switcher)
+                    || ((!i.contains("400") && !i.contains("500")) && !switcher)) {
                     time = i.split(" ", 2);
-                    out.print(time[1] + ';');
-                    switcher = false;
-                }
-                if ((!i.contains("400") && !i.contains("500")) && !switcher) {
-                    time = i.split(" ", 2);
-                    out.println(time[1] + ';');
-                    switcher = true;
+                    out.append(time[1] + ';');
+                    switcher = !switcher;
+                    if (switcher) {
+                        out.println();
+                    }
                 }
             }
         } catch (IOException e) {
