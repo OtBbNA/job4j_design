@@ -11,11 +11,11 @@ public class DuplicatesFinder {
         DuplicatesVisitor i = new DuplicatesVisitor();
         Files.walkFileTree(Path.of("./"), i);
         Map<FileProperty, Set<Path>> r = i.getRsl();
-        for (FileProperty s : r.keySet()) {
-            if (r.get(s).size() > 1) {
-                System.out.print(String.format("%s - %s%n", s.getName(), s.getSize()));
-                for (Path e : r.get(s)) {
-                    System.out.println(e);
+        for (FileProperty filePrKey : r.keySet()) {
+            if (r.get(filePrKey).size() > 1) {
+                System.out.print(String.format("%s - %s%n", filePrKey.getName(), filePrKey.getSize()));
+                for (Path valueSet : r.get(filePrKey)) {
+                    System.out.println(valueSet);
                 }
             }
         }
