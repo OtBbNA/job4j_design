@@ -33,7 +33,7 @@ public class Search {
         if (!file.isDirectory()) {
             throw new IllegalArgumentException("Directory is not correct");
         }
-        if (args[1].length() > 1 && !args[1].contains(".")) {
+        if (args[1].length() < 2 && !args[1].contains(".")) {
             throw new IllegalArgumentException("File extension is incorrect");
         }
     }
