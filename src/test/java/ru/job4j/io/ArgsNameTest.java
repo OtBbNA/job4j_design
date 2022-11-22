@@ -23,6 +23,12 @@ class ArgsNameTest {
     }
 
     @Test
+    void whenGetNotExist() {
+        ArgsName jvm = ArgsName.of(new String[] {"-Xmx=512"});
+        assertThat(jvm.get("Xms")).isNull();
+    }
+
+    @Test
     void whenWrongSomeArgument() {
         assertThatThrownBy(() -> ArgsName.of(new String[]{}))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("Got an empty array");
