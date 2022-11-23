@@ -12,7 +12,7 @@ public class Zip {
         try (ZipOutputStream zip = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(target)))) {
             for (Path path : sources) {
                 zip.putNextEntry(new ZipEntry(path.toString()));
-                try (BufferedInputStream out = new BufferedInputStream(new FileInputStream(String.valueOf(path)))) {
+                try (BufferedInputStream out = new BufferedInputStream(new FileInputStream(path.toString()))) {
                     zip.write(out.readAllBytes());
                 }
             }
@@ -29,14 +29,13 @@ public class Zip {
         if (!file.isDirectory()) {
             throw new IllegalArgumentException("Directory is not correct");
         }
-        if (!exclude.startsWith(".") && exclude.length() < 2) {
+        if (!exclude.startsWith(".") || exclude.length() < 2) {
             throw new IllegalArgumentException("File extension is incorrect");
         }
         if (!output.contains(".zip") && output.length() < 5) {
             throw new IllegalArgumentException("Incorrect output filename");
         }
     }
-
 
     public static void main(String[] args) throws IOException {
         Zip zip = new Zip();
