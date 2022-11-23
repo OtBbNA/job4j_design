@@ -25,7 +25,7 @@ class ArgsNameTest {
     @Test
     void whenGetNotExist() {
         ArgsName jvm = ArgsName.of(new String[] {"-Xmx=512"});
-        assertThat(jvm.get("Xms")).isNull();
+        assertThatThrownBy(() -> jvm.get("Xms")).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("Key Xms not found, please enter a valid key");
     }
 
     @Test
