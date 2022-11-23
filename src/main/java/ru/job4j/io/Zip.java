@@ -11,7 +11,7 @@ public class Zip {
     public void packFiles(List<Path> sources, File target) {
         try (ZipOutputStream zip = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(target)))) {
             for (Path path : sources) {
-                zip.putNextEntry(new ZipEntry(String.valueOf(path)));
+                zip.putNextEntry(new ZipEntry(path.toString()));
                 try (BufferedInputStream out = new BufferedInputStream(new FileInputStream(String.valueOf(path)))) {
                     zip.write(out.readAllBytes());
                 }
@@ -25,10 +25,11 @@ public class Zip {
         File file = new File(directory);
         if (!file.exists()) {
             throw new IllegalArgumentException("Directory does not exist");
-        } else if (!file.isDirectory()) {
+        }
+        if (!file.isDirectory()) {
             throw new IllegalArgumentException("Directory is not correct");
         }
-        if (!exclude.startsWith(".")) {
+        if (!exclude.startsWith(".") && exclude.length() < 2) {
             throw new IllegalArgumentException("File extension is incorrect");
         }
         if (!output.contains(".zip") && output.length() < 5) {
@@ -44,7 +45,7 @@ public class Zip {
         String exclude = scissorsData.get("e");
         String output = scissorsData.get("o");
         zip.validateDEO(directory, exclude, output);
-        List<Path> searcher = Search.search(Path.of(directory), t -> !t.toFile().getName().startsWith(exclude));
+        List<Path> searcher = Search.search(Path.of(directory), t -> !t.toFile().getName().endsWith(exclude));
         zip.packFiles(searcher, new File(output));
     }
 }
