@@ -28,13 +28,13 @@ public class ConsoleChat {
             Scanner in = new Scanner(System.in);
             String i = in.nextLine();
             diaLog.add(i);
-            if (i.equals(STOP)) {
+            if (STOP.equals(i)) {
                 switcher = STOP;
             }
-            if (i.equals(CONTINUE)) {
+            if (CONTINUE.equals(i)) {
                 switcher = CONTINUE;
             }
-            if (i.equals(OUT)) {
+            if (OUT.equals(i)) {
                 switcher = OUT;
             }
             if (switcher.equals(CONTINUE)) {
