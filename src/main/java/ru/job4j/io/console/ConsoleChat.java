@@ -1,13 +1,10 @@
 package ru.job4j.io.console;
-
 import java.io.*;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
 public class ConsoleChat {
     private static final String OUT = "закончить";
     private static final String STOP = "стоп";
@@ -16,12 +13,10 @@ public class ConsoleChat {
     private final String botAnswers;
     private List<String> diaLog = new ArrayList<>();
     private List<String> answers = new ArrayList<>();
-
     public ConsoleChat(String path, String botAnswers) {
         this.path = path;
         this.botAnswers = botAnswers;
     }
-
     public void run() {
         String switcher = CONTINUE;
         while (!switcher.equals(OUT)) {
@@ -45,7 +40,6 @@ public class ConsoleChat {
         }
         saveLog(diaLog);
     }
-
     private List<String> readPhrases() {
         try (BufferedReader in = new BufferedReader(
                 new FileReader(botAnswers))) {
@@ -55,7 +49,6 @@ public class ConsoleChat {
         }
         return null;
     }
-
     private void saveLog(List<String> log) {
         try (PrintWriter out = new PrintWriter(new BufferedOutputStream(new FileOutputStream(path)))) {
             log.forEach(out::println);
@@ -63,7 +56,6 @@ public class ConsoleChat {
             e.printStackTrace();
         }
     }
-
     public static void main(String[] args) {
         ConsoleChat cc = new ConsoleChat("DiaLog.txt", "./data/Answers.txt");
         cc.readPhrases();
