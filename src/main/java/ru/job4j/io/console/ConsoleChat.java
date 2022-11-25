@@ -14,14 +14,17 @@ public class ConsoleChat {
     private static final String CONTINUE = "продолжить";
     private final String path;
     private final String botAnswers;
-    private List<String> diaLog = new ArrayList<>();
-    private List<String> answers = new ArrayList<>();
     public ConsoleChat(String path, String botAnswers) {
         this.path = path;
         this.botAnswers = botAnswers;
     }
 
     public void run() {
+        List<String> answers = readPhrases();
+        List<String> diaLog = new ArrayList<>();
+        if (answers.isEmpty()) {
+            throw new NullPointerException("Make sure the answer file is not empty");
+        }
         String switcher = CONTINUE;
         while (!switcher.equals(OUT)) {
             Scanner in = new Scanner(System.in);
@@ -46,13 +49,14 @@ public class ConsoleChat {
     }
 
     private List<String> readPhrases() {
+        List<String> rsl = new ArrayList<>();
         try (BufferedReader in = new BufferedReader(
                 new FileReader(botAnswers))) {
-            return in.lines().collect(Collectors.toCollection(() -> answers));
+            return in.lines().collect(Collectors.toCollection(() -> rsl));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return rsl;
     }
 
     private void saveLog(List<String> log) {
@@ -65,7 +69,6 @@ public class ConsoleChat {
 
     public static void main(String[] args) {
         ConsoleChat cc = new ConsoleChat("DiaLog.txt", "./data/Answers.txt");
-        cc.readPhrases();
         cc.run();
     }
 }
