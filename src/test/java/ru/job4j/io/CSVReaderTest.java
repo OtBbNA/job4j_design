@@ -12,8 +12,7 @@ import java.nio.file.Files;
 class CSVReaderTest {
 
     @Test
-    void whenFilterTwoColumns() throws Exception {
-        Path folder = Path.of("./");
+    void whenFilterTwoColumns(@TempDir Path folder) throws Exception {
         String data = String.join(
                 System.lineSeparator(),
                 "name;age;last_name;education",
@@ -39,8 +38,7 @@ class CSVReaderTest {
     }
 
     @Test
-    void whenFilterThreeColumns() throws Exception {
-        Path folder = Path.of("./");
+    void whenFilterThreeColumns(@TempDir Path folder) throws Exception {
         String data = String.join(
                 System.lineSeparator(),
                 "name;age;last_name;education",
@@ -67,8 +65,7 @@ class CSVReaderTest {
     }
 
     @Test
-    void whenSourceDnotContainFilterValues() throws Exception {
-        Path folder = Path.of("./");
+    void whenSourceDnotContainFilterValues(@TempDir Path folder) throws Exception {
         String data = String.join(
                 System.lineSeparator(),
                 "name;age;last_name;education",
@@ -89,8 +86,7 @@ class CSVReaderTest {
     }
 
     @Test
-    void whenIllegalSourceName() throws Exception {
-        Path folder = Path.of("./");
+    void whenIllegalSourceName(@TempDir Path folder) throws Exception {
         File file = folder.resolve("source.cs").toFile();
         File target = folder.resolve("target.csv").toFile();
         ArgsName argsName = ArgsName.of(new String[]{
@@ -103,8 +99,7 @@ class CSVReaderTest {
     }
 
     @Test
-    void whenIllegalTargetName() throws Exception {
-        Path folder = Path.of("./");
+    void whenIllegalTargetName(@TempDir Path folder) throws Exception {
         File file = folder.resolve("source.csv").toFile();
         File target = folder.resolve("target.cs").toFile();
         ArgsName argsName = ArgsName.of(new String[]{
@@ -117,8 +112,7 @@ class CSVReaderTest {
     }
 
     @Test
-    void whenIllegalDelimiter() throws Exception {
-        Path folder = Path.of("./");
+    void whenIllegalDelimiter(@TempDir Path folder) throws Exception {
         File file = folder.resolve("source.csv").toFile();
         File target = folder.resolve("target.csv").toFile();
         ArgsName argsName = ArgsName.of(new String[]{
