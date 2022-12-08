@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CSVReader {
-
     public static void handle(ArgsName argsName) throws Exception {
         validation(argsName);
         String path = argsName.get("path");
