@@ -12,7 +12,7 @@ public class CSVReader {
         String delimiter = argsName.get("delimiter");
         String out = argsName.get("out");
         String filter = argsName.get("filter");
-        try (var scanner = new Scanner(new FileInputStream(path)).useDelimiter("\r\n")) {
+        try (var scanner = new Scanner(new FileInputStream(path)).useDelimiter(System.lineSeparator())) {
             List<String> line = new ArrayList<>();
             while (scanner.hasNext()) {
                 line.add(scanner.next());
