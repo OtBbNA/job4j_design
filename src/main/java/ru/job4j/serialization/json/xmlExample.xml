@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsonMyExample magazine="true" numberOfrounds="3" firingMode="SemiAuto">
+    <cartridges penetration="2" type="expansive"/>
+    <barrelFeatures>
+        <barrelFeature>6</barrelFeature>
+        <barrelFeature>3</barrelFeature>
+        <barrelFeature>9</barrelFeature>
+    </barrelFeatures>
+</jsonMyExample>
