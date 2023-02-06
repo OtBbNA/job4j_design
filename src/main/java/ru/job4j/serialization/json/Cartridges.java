@@ -1,11 +1,30 @@
 package ru.job4j.serialization.json;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "cartridges")
 public class Cartridges {
+
+    public Cartridges() {
+
+    }
+
+    @XmlAttribute
     private int penetration;
+    @XmlAttribute
     private String type;
 
     public Cartridges(int penetration, String type) {
         this.penetration = penetration;
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Cartridges{"
+                + "penetration=" + penetration
+                + ", type='" + type + '\''
+                + '}';
     }
 }
