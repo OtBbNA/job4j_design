@@ -1,5 +1,8 @@
 package ru.job4j.serialization.json;
 
+import org.json.JSONObject;
+import org.json.JSONString;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -24,7 +27,6 @@ public class JsonMyExample {
     private List<String> barrelFeatures;
 
     public JsonMyExample() {
-
     }
 
     public JsonMyExample(boolean magazine, int numberOfRounds,
@@ -36,6 +38,30 @@ public class JsonMyExample {
         this.rsl = new Cartridges[numberOfRounds];
         Arrays.fill(rsl, cartridges);
         this.barrelFeatures = barrelFeatures;
+    }
+
+    public boolean isMagazine() {
+        return magazine;
+    }
+
+    public int getNumberOfRounds() {
+        return numberOfRounds;
+    }
+
+    public String getFiringMode() {
+        return firingMode;
+    }
+
+    public Cartridges getCartridges() {
+        return cartridges;
+    }
+
+    public Cartridges[] getRsl() {
+        return rsl;
+    }
+
+    public List<String> getBarrelFeatures() {
+        return barrelFeatures;
     }
 
     @Override
@@ -75,5 +101,8 @@ public class JsonMyExample {
             JsonMyExample result = (JsonMyExample) unmarshaller.unmarshal(reader);
             System.out.println(result);
         }
+
+        JSONObject jsonObject = new JSONObject(jsonMyExample);
+        System.out.println(jsonObject);
     }
 }

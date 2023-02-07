@@ -19,6 +19,14 @@ public class Cartridges {
         this.type = type;
     }
 
+    public int getPenetration() {
+        return penetration;
+    }
+
+    public String getType() {
+        return type;
+    }
+
     @Override
     public String toString() {
         return "Cartridges{"
