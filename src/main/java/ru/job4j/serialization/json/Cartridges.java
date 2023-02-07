@@ -6,14 +6,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "cartridges")
 public class Cartridges {
 
-    public Cartridges() {
-
-    }
-
     @XmlAttribute
     private int penetration;
     @XmlAttribute
     private String type;
+
+    public Cartridges() {
+    }
 
     public Cartridges(int penetration, String type) {
         this.penetration = penetration;
