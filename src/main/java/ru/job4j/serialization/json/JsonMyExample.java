@@ -24,6 +24,7 @@ public class JsonMyExample {
     private List<String> barrelFeatures;
 
     public JsonMyExample() {
+
     }
 
     public JsonMyExample(boolean magazine, int numberOfRounds,
