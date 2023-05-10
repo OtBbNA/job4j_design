@@ -11,7 +11,7 @@ $$
 LANGUAGE 'plpgsql';
 
 create trigger tribute_trigger
-    before insert on products
+    after insert on products
     referencing new table as inserted
     for each statement
     execute procedure tribute();
@@ -30,7 +30,7 @@ $$
 LANGUAGE 'plpgsql';
 
 create trigger scat_trigger
-    after insert on products
+    before insert on products
     for each row
     execute procedure scat();
 
@@ -47,7 +47,7 @@ $$
 LANGUAGE 'plpgsql';
 
 create trigger history_trigger
-    before insert
+    after insert
     on products
     for each row
     execute procedure history_data();
