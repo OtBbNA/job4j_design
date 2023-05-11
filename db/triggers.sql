@@ -4,7 +4,7 @@ $$
     BEGIN
         update products
         set price = price + price * 0.2
-	where id = (select id from inserted);
+	where id in (select id from inserted);
         return new;
     END;
 $$
@@ -22,7 +22,7 @@ create or replace function scat()
 $$
     BEGIN
         update products
-        set price = price + price * 0.2
+        set new.price = new.price + new.price * 0.2
 	where id = new.id;
         return NEW;
     END;
@@ -47,7 +47,6 @@ $$
 LANGUAGE 'plpgsql';
 
 create trigger history_trigger
-    after insert
-    on products
+    after insert on products
     for each row
     execute procedure history_data();
