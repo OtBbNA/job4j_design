@@ -1,38 +1,37 @@
-create or replace function tribute()
+create or replace function tax_statement()
     returns trigger as
 $$
     BEGIN
         update products
         set price = price + price * 0.2
-	where id in (select id from inserted);
+		where id in (select id from inserted);
         return new;
     END;
 $$
 LANGUAGE 'plpgsql';
 
-create trigger tribute_trigger
+
+create trigger tax_statement_trigger
     after insert on products
     referencing new table as inserted
     for each statement
-    execute procedure tribute();
+    execute procedure tax_statement();
 
 
-create or replace function scat()
+create or replace function tax_row()
     returns trigger as
 $$
     BEGIN
-        update products
-        set new.price = new.price + new.price * 0.2
-	where id = new.id;
+	    new.price = new.price + new.price * 0.2;
         return NEW;
     END;
 $$
 LANGUAGE 'plpgsql';
 
-create trigger scat_trigger
+create trigger tax_row_trigger
     before insert on products
     for each row
-    execute procedure scat();
+    execute procedure tax_row();
 
 
 create or replace function history_data()
