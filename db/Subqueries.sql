@@ -28,4 +28,4 @@ values (15, 3);
 
 SELECT (SELECT first_name FROM customers c WHERE (o.id = c.id)), amount
 FROM orders o
-WHERE o.amount IS NULL;
+WHERE o.amount NOT IN (SELECT id FROM customers c WHERE (o.id = c.id));
