@@ -26,6 +26,6 @@ values (2);
 insert into orders (amount, customer_id)
 values (15, 3);
 
-SELECT (SELECT first_name FROM customers c WHERE (o.id = c.id)), amount
-FROM orders o
-WHERE o.amount NOT IN (SELECT id FROM customers c WHERE (o.id = c.id));
+SELECT first_name, last_name
+FROM customers c
+WHERE c.id NOT IN (SELECT id FROM orders o WHERE (o.id = c.id));
