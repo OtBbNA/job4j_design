@@ -22,13 +22,11 @@ public class ImportDB {
     public List<User> load() throws IOException {
         List<User> users = new ArrayList<>();
         try (BufferedReader rd = new BufferedReader(new FileReader(dump))) {
-            rd.lines().forEach(line -> {
-                String[] s = line.split(";", 2);
-                if (!s[0].isBlank() && !s[1].isBlank()) {
-                    users.add(new User(s[0], s[1]));
-                } else {
-                    new IllegalArgumentException().printStackTrace();
+            rd.lines().map(line -> line.split(";", 2)).forEach(s -> {
+                if (s[0].isBlank() || s[1].isBlank()) {
+                    throw new IllegalArgumentException("name or login value are empty");
                 }
+                users.add(new User(s[0], s[1]));
             });
         } catch (Exception io) {
             io.printStackTrace();
