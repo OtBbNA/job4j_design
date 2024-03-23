@@ -90,6 +90,6 @@ class GeneratorTest {
         Map<String, String> exampleMap = new HashMap<>();
         exampleMap.put("name", "Arthur");
         exampleMap.put("subject", "you");
-        assertThat(expected).isEqualTo(templateGenerator.produce(exampleString, exampleMap));;
+        assertThat(expected).isEqualTo(templateGenerator.produce(exampleString, exampleMap));
     }
 }
