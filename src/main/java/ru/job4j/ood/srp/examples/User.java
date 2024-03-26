@@ -1,4 +1,4 @@
-package ru.job4j.srp.examples;
+package ru.job4j.ood.srp.examples;
 
 import java.util.ArrayList;
 import java.util.List;
