@@ -6,7 +6,7 @@ import java.util.OptionalDouble;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class User {
+public class UserSCP {
 
     private String name;
     private int age;
@@ -14,10 +14,10 @@ public class User {
 
     private List<String> users = new ArrayList<>();
 
-    public User() {
+    public UserSCP() {
     }
 
-    public User(String name, int age, String phoneNumber) {
+    public UserSCP(String name, int age, String phoneNumber) {
         this.name = name;
         this.age = age;
         this.phoneNumber = phoneNumber;
@@ -43,7 +43,7 @@ public class User {
     }
 
     public static void main(String[] args) {
-        User user = new User();
+        UserSCP user = new UserSCP();
         user.adduser("Sasha", 10, "23787489273");
         user.adduser("Masha", 15, "56788567876");
         user.adduser("Misha", 21, "98746366587");
