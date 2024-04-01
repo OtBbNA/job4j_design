@@ -21,8 +21,10 @@ class ReportXMLTest {
         MemoryStore store = new MemoryStore();
         Calendar now = Calendar.getInstance();
         Employee worker0 = new Employee("Ruslan", now, now, 220);
+        Employee worker1 = new Employee("Milan", now, now, 120);
         String date = new ReportDateTimeParser().parse(now);
         store.add(worker0);
+        store.add(worker1);
         Report engine = new ReportXML(store);
         List<String> expected = List.of("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>",
                 "<employees>",
@@ -31,6 +33,12 @@ class ReportXMLTest {
                 "<hired>" + date + "</hired>",
                 "<fired>" + date + "</fired>",
                 "<salary>220.0</salary>",
+                "</employee>",
+                "<employee>",
+                "<name>Milan</name>",
+                "<hired>" + date + "</hired>",
+                "<fired>" + date + "</fired>",
+                "<salary>120.0</salary>",
                 "</employee>",
                 "</employees>");
         assertThat(engine.generate(employee -> true)).contains(expected);
