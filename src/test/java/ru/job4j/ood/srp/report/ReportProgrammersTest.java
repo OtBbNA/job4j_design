@@ -7,6 +7,7 @@ import ru.job4j.ood.srp.formatter.ReportDateTimeParser;
 import ru.job4j.ood.srp.model.Employee;
 import ru.job4j.ood.srp.store.MemoryStore;
 
+import javax.xml.bind.JAXBException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Calendar;
@@ -16,7 +17,7 @@ import static org.assertj.core.api.Assertions.*;
 class ReportProgrammersTest {
 
     @Test
-    public void whenOldGenerated(@TempDir Path tempDir) {
+    public void whenOldGenerated(@TempDir Path tempDir) throws JAXBException {
         Path path = tempDir.resolve("report.csv");
         String delimiter = ";";
         MemoryStore store = new MemoryStore();
