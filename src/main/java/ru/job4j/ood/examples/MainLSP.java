@@ -1,4 +1,4 @@
-package ru.job4j.ood.srp.examples;
+package ru.job4j.ood.examples;
 
 import java.util.HashMap;
 import java.util.Map;
