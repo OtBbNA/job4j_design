@@ -11,8 +11,8 @@ public class ParkingSpaceGenerator {
         for (int i = 0; i < amount; i++) {
             int rand = random.nextInt(4);
             switch (rand) {
-                case 2, 3 -> rsl.add(new ParkingSpaceTruck(String.valueOf(i)));
-                default -> rsl.add(new ParkingSpaceAuto(String.valueOf(i)));
+                case 2, 3 -> rsl.add(new ParkingSpaceTruck());
+                default -> rsl.add(new ParkingSpaceAuto());
             }
         }
         return rsl;
