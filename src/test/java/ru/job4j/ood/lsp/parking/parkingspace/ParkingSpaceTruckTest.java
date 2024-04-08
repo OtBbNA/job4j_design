@@ -10,7 +10,7 @@ class ParkingSpaceTruckTest {
     @Test
     void whenCreateParkingSpaceTruckThenSize1() {
         for (int i = 0; i < 100; i++) {
-            ParkingSpaceTruck truck = new ParkingSpaceTruck("");
+            ParkingSpaceTruck truck = new ParkingSpaceTruck();
             assertThat(truck.getSize()).isLessThan(9).isGreaterThan(1);
         }
     }

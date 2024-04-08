@@ -8,7 +8,7 @@ class CarAutoTest {
 
     @Test
     void whenCreateCarAutomobileThenSize1() {
-        CarAuto auto = new CarAuto("");
+        CarAuto auto = new CarAuto();
         assertThat(auto.getSize()).isEqualTo(1);
     }
 }

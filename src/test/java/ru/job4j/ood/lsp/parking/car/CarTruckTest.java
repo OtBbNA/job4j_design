@@ -11,7 +11,7 @@ class CarTruckTest {
     @Test
     void whenCreateCarTruckThenSize1() {
         for (int i = 0; i < 100; i++) {
-            CarTruck truck = new CarTruck("");
+            CarTruck truck = new CarTruck();
             assertThat(truck.getSize()).isLessThan(9).isGreaterThan(1);
         }
     }

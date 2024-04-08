@@ -10,7 +10,7 @@ class ParkingSpaceAutoTest {
 
     @Test
     void whenCreateParkingSpaceAutoThenSize1() {
-        ParkingSpaceAuto auto = new ParkingSpaceAuto("");
+        ParkingSpaceAuto auto = new ParkingSpaceAuto();
         assertThat(auto.getSize()).isEqualTo(1);
     }
 }
