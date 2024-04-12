@@ -8,16 +8,14 @@ import java.util.*;
 public class ControlQuality  {
 
     private List<Food> foodList;
-    private Calendar date;
     private List<Store> stores;
 
-    public ControlQuality(List<Food> foodList, Calendar date, List<Store> stores) {
+    public ControlQuality(List<Food> foodList, List<Store> stores) {
         this.foodList = foodList;
-        this.date = date;
         this.stores = stores;
     }
 
-    public boolean distribution() {
+    public boolean distribution(Calendar date) {
         boolean result = false;
         for (Food food : foodList) {
             double daysGood = food.getExpiryDate().getTime().getTime() - food.getCreateDate().getTime().getTime();
@@ -28,5 +26,15 @@ public class ControlQuality  {
                 }
             }
         return result;
+    }
+
+    public void resort(Calendar date) {
+        List<Food> bufferFoods = new ArrayList<>();
+        for (Store store : stores) {
+            bufferFoods.addAll(store.get());
+        }
+        foodList = new ArrayList<>();
+        foodList.addAll(bufferFoods);
+        distribution(date);
     }
 }
