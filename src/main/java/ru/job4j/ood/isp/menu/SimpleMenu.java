@@ -12,6 +12,7 @@ public class SimpleMenu implements Menu {
 
     @Override
     public boolean add(String parentName, String childName, ActionDelegate actionDelegate) {
+        List<String> list = new ArrayList<>();
         MenuItem newItem = new SimpleMenuItem(childName, actionDelegate);
         Optional<ItemInfo> findedItem = findItem(parentName);
         if (findedItem.isPresent()) {
