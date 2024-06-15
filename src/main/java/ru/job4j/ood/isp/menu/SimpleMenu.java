@@ -4,11 +4,14 @@ import java.util.*;
 
 public class SimpleMenu implements Menu {
 
+
+
     private final List<MenuItem> rootElements = new ArrayList<>();
+
+
 
     @Override
     public boolean add(String parentName, String childName, ActionDelegate actionDelegate) {
-        List<String> list = new LinkedList<>();
         MenuItem newItem = new SimpleMenuItem(childName, actionDelegate);
         Optional<ItemInfo> findedItem = findItem(parentName);
         if (findedItem.isPresent()) {
